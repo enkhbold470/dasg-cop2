@@ -8,6 +8,19 @@
   let userInput = "";
   let isLoading = false;
   let chatContainer;
+  let loadingSteps = [
+    "Thinking...",
+    "Checking my memory...",
+    "Critical thinking...",
+    "Analyzing...",
+    "Reasoning...",
+    "Generating response...",
+    "Almost done...",
+    "Right there...",
+    "Just a moment...",
+    "Hold on tight...",
+  ];
+  let currentLoadingStep = 0;
 
   // Configure marked options
   marked.setOptions({
@@ -16,7 +29,7 @@
   });
 
   // Scroll to bottom of chat when new messages arrive
-  $: if (chatContainer) {
+  $: if (chatContainer && messages.length) {
     chatContainer.scrollTop = chatContainer.scrollHeight;
   }
 
@@ -27,6 +40,17 @@
     messages = [...messages, { role: "user", content: userMessage }];
     userInput = "";
     isLoading = true;
+    currentLoadingStep = 0;
+
+    // Ensure scroll to bottom when AI is thinking
+    if (chatContainer) {
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+
+    // Simulate loading steps
+    const loadingInterval = setInterval(() => {
+      currentLoadingStep = (currentLoadingStep + 1) % loadingSteps.length;
+    }, 1000);
 
     try {
       const response = await fetch("/api/chat", {
@@ -68,11 +92,19 @@
         },
       ];
     } finally {
+      clearInterval(loadingInterval);
       isLoading = false;
+      currentLoadingStep = 0;
       // Ensure scroll to bottom after loading new message
       if (chatContainer) {
         chatContainer.scrollTop = chatContainer.scrollHeight;
       }
+      // Additional scroll to bottom after response is displayed
+      setTimeout(() => {
+        if (chatContainer) {
+          chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+      }, 0);
     }
   }
 
@@ -97,7 +129,9 @@
       </div>
     </button>
   {:else}
-    <div class="bg-white rounded-lg shadow-xl w-96 h-[500px] flex flex-col">
+    <div
+      class="bg-white rounded-lg shadow-xl w-full max-w-[800px] min-h-[600px] max-h-[700px] flex flex-col md:w-[80%] md:h-[80%]"
+    >
       <!-- Header -->
       <div
         class="p-4 bg-blue-500 text-white rounded-t-lg flex justify-between items-center"
@@ -149,7 +183,7 @@
         {#if isLoading}
           <div class="flex justify-start">
             <div class="bg-white rounded-lg p-3 text-gray-800 shadow-sm">
-              <div class="flex space-x-2">
+              <div class="flex space-x-2 items-center">
                 <div
                   class="w-2 h-2 bg-blue-400 rounded-full animate-bounce"
                 ></div>
@@ -161,6 +195,9 @@
                   class="w-2 h-2 bg-blue-400 rounded-full animate-bounce"
                   style="animation-delay: 0.4s"
                 ></div>
+                <div class="text-gray-500">
+                  {loadingSteps[currentLoadingStep]}
+                </div>
               </div>
             </div>
           </div>
@@ -182,8 +219,25 @@
             disabled={isLoading || !userInput.trim()}
             class="bg-blue-500 text-white rounded-lg px-4 py-2 hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
           >
-            <Send class="h-6 w-6" />
+            {#if isLoading}
+              <span class="animate-spin">
+                <Send class="h-6 w-6" />
+              </span>
+            {:else}
+              <Send class="h-6 w-6" />
+            {/if}
           </button>
+        </div>
+        <div class="mt-2 text-[10px] text-gray-500">
+          <p>
+            Disclaimer: Responses may not always be accurate. Please
+            double-check any information. For questions, contact <a
+              href="mailto:inky@enk.icu"
+              class="text-blue-500">inky@enk.icu</a
+            >. We do not store any of your chat, information, or cookies. Check
+            out our
+            <a href="/terms-privacy" class="text-blue-500">terms & privacy</a>.
+          </p>
         </div>
       </div>
     </div>
@@ -194,5 +248,11 @@
   /* Markdown content styling */
   :global(.prose) {
     @apply max-w-none;
+  }
+  @media (max-width: 768px) {
+    .chat-container {
+      width: 100%;
+      height: 100%;
+    }
   }
 </style>
