@@ -9,9 +9,16 @@
   let isLoading = false;
   let chatContainer;
   let loadingSteps = [
-    "Reasoning...",
+    "Thinking...",
     "Checking my memory...",
-    "Fact checking...",
+    "Critical thinking...",
+    "Analyzing...",
+    "Reasoning...",
+    "Generating response...",
+    "Almost done...",
+    "Right there...",
+    "Just a moment...",
+    "Hold on tight...",
   ];
   let currentLoadingStep = 0;
 
@@ -122,7 +129,9 @@
       </div>
     </button>
   {:else}
-    <div class="bg-white rounded-lg shadow-xl w-96 h-[500px] flex flex-col">
+    <div
+      class="bg-white rounded-lg shadow-xl w-full max-w-[800px] min-h-[600px] flex flex-col md:w-[80%] md:h-[80%]"
+    >
       <!-- Header -->
       <div
         class="p-4 bg-blue-500 text-white rounded-t-lg flex justify-between items-center"
@@ -219,6 +228,17 @@
             {/if}
           </button>
         </div>
+        <div class="mt-2 text-[10px] text-gray-500">
+          <p>
+            Disclaimer: Responses may not always be accurate. Please
+            double-check any information. For questions, contact <a
+              href="mailto:inky@enk.icu"
+              class="text-blue-500">inky@enk.icu</a
+            >. We do not store any of your chat, information, or cookies. Check
+            out our
+            <a href="/terms-privacy" class="text-blue-500">terms & privacy</a>.
+          </p>
+        </div>
       </div>
     </div>
   {/if}
@@ -228,5 +248,11 @@
   /* Markdown content styling */
   :global(.prose) {
     @apply max-w-none;
+  }
+  @media (max-width: 768px) {
+    .chat-container {
+      width: 100%;
+      height: 100%;
+    }
   }
 </style>
