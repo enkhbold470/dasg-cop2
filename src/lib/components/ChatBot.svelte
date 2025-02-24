@@ -130,7 +130,7 @@
     </button>
   {:else}
     <div
-      class="bg-white rounded-lg shadow-xl w-full max-w-[800px] min-h-[600px] flex flex-col md:w-[80%] md:h-[80%]"
+      class="bg-white rounded-lg shadow-xl w-full max-w-[800px] min-h-[400px] lg:min-h-[600px] max-h-[600px] flex flex-col md:w-[80%] md:h-[80%]"
     >
       <!-- Header -->
       <div
