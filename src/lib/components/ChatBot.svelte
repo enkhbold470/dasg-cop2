@@ -8,6 +8,12 @@
   let userInput = "";
   let isLoading = false;
   let chatContainer;
+  let loadingSteps = [
+    "Reasoning...",
+    "Checking my memory...",
+    "Fact checking...",
+  ];
+  let currentLoadingStep = 0;
 
   // Configure marked options
   marked.setOptions({
@@ -16,7 +22,7 @@
   });
 
   // Scroll to bottom of chat when new messages arrive
-  $: if (chatContainer) {
+  $: if (chatContainer && messages.length) {
     chatContainer.scrollTop = chatContainer.scrollHeight;
   }
 
@@ -27,6 +33,17 @@
     messages = [...messages, { role: "user", content: userMessage }];
     userInput = "";
     isLoading = true;
+    currentLoadingStep = 0;
+
+    // Ensure scroll to bottom when AI is thinking
+    if (chatContainer) {
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+
+    // Simulate loading steps
+    const loadingInterval = setInterval(() => {
+      currentLoadingStep = (currentLoadingStep + 1) % loadingSteps.length;
+    }, 1000);
 
     try {
       const response = await fetch("/api/chat", {
@@ -68,11 +85,19 @@
         },
       ];
     } finally {
+      clearInterval(loadingInterval);
       isLoading = false;
+      currentLoadingStep = 0;
       // Ensure scroll to bottom after loading new message
       if (chatContainer) {
         chatContainer.scrollTop = chatContainer.scrollHeight;
       }
+      // Additional scroll to bottom after response is displayed
+      setTimeout(() => {
+        if (chatContainer) {
+          chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+      }, 0);
     }
   }
 
@@ -149,7 +174,7 @@
         {#if isLoading}
           <div class="flex justify-start">
             <div class="bg-white rounded-lg p-3 text-gray-800 shadow-sm">
-              <div class="flex space-x-2">
+              <div class="flex space-x-2 items-center">
                 <div
                   class="w-2 h-2 bg-blue-400 rounded-full animate-bounce"
                 ></div>
@@ -161,6 +186,9 @@
                   class="w-2 h-2 bg-blue-400 rounded-full animate-bounce"
                   style="animation-delay: 0.4s"
                 ></div>
+                <div class="text-gray-500">
+                  {loadingSteps[currentLoadingStep]}
+                </div>
               </div>
             </div>
           </div>
@@ -182,7 +210,13 @@
             disabled={isLoading || !userInput.trim()}
             class="bg-blue-500 text-white rounded-lg px-4 py-2 hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
           >
-            <Send class="h-6 w-6" />
+            {#if isLoading}
+              <span class="animate-spin">
+                <Send class="h-6 w-6" />
+              </span>
+            {:else}
+              <Send class="h-6 w-6" />
+            {/if}
           </button>
         </div>
       </div>

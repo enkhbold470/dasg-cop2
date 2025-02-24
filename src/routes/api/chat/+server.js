@@ -16,10 +16,16 @@ const pc = new Pinecone({
 
 const index = pc.Index(PINECONE_INDEX);
 
+// Temporary storage for previous questions
+const previousQuestions = [];
+
 export async function POST({ request }) {
   try {
     const { message } = await request.json();
     console.log("Processing message:", message);
+
+    // Store the current message in the temporary storage
+    previousQuestions.push(message);
 
     // Get embeddings for the user's message
     const embeddingResponse = await openai.embeddings.create({
@@ -59,6 +65,10 @@ export async function POST({ request }) {
           
           Use the following context to inform your responses: ${context}`,
         },
+        ...previousQuestions.map((question) => ({
+          role: "user",
+          content: question,
+        })),
         {
           role: "user",
           content: message,
