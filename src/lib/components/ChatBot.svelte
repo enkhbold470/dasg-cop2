@@ -234,8 +234,7 @@
             double-check any information. For questions, contact <a
               href="mailto:inky@enk.icu"
               class="text-blue-500">inky@enk.icu</a
-            >. We do not store any of your chat, information, or cookies. Check
-            out our
+            >. We do not store any of your chat, information. Check out our
             <a href="/terms-privacy" class="text-blue-500">terms & privacy</a>.
           </p>
         </div>
