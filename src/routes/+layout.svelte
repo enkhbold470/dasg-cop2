@@ -50,6 +50,20 @@
     name="twitter:image"
     content="https://raw.githubusercontent.com/enkhbold470/enkhbold470/refs/heads/main/clean.jpg"
   />
+  <!-- Google tag (gtag.js) -->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-Y1RH8SXWS1"
+  ></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-Y1RH8SXWS1");
+  </script>
 
   <!-- Meta Tags Generated via https://www.opengraph.xyz -->
 </svelte:head>
