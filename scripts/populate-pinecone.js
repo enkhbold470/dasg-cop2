@@ -6,24 +6,33 @@ dotenv.config();
 
 const campaignData = [
   {
-    title: "Q1 2024: Foundations and Exploration",
+    title: "Candidate Platform - Mental Health & Gaming",
     content:
-      "Focused on foundational coursework at De Anza College and exploring introductory concepts in AI and IoT. Participated in initial hackathons, gaining experience in teamwork and project development. Began exploring 3D printing and its applications in sustainable technology.",
+      "College can be stressful, but taking care of mental health is just as important as academics. Inky Ganbold will organize mental health workshops, gaming nights, and e-sports tournaments to give students a fun way to unwind, socialize, and de-stress. The goal is to build a campus where mental wellness and gaming go hand in hand.",
   },
   {
-    title: "Q2 2024: Hackathon Season and Professional Development",
+    title: "Candidate Platform - Startup Pitching Contest",
     content:
-      "Immersed in the hackathon circuit, participating in numerous events across various universities. Secured initial top placements, demonstrating growing technical skills. Attended Apple Developer Meetups and gained insights into Apple's ecosystem. Started working on Bloom AI and Electronic Caffeine projects.",
+      "This contest will connect students with mentors, judges, and potential investors to help turn their ideas into real opportunities. Whether in tech, fashion, food, or social impact, students will have the chance to pitch and build something amazing.",
   },
   {
-    title: "Q3 2024:  Deepening Technical Skills and Industry Immersion",
+    title: "Candidate Platform - Resume & LinkedIn Workshops",
     content:
-      "Continued active participation in hackathons and expanded technical expertise by integrating Flask, Next.js, and TypeScript in projects. Attended Google I/O and participated in The Silicon Valley Laboratory (TSVL) bootcamp, gaining valuable industry exposure and entrepreneurial insights.  Made significant progress on GitHub projects and began introducing Neurofocus to a wider audience.",
+      "Resumes and LinkedIn profiles are crucial for job and internship applications. Inky Ganbold will organize resume-building workshops, mock interviews, and networking events with industry professionals to help students land opportunities and advance in their careers.",
   },
   {
-    title: "Q4 2024:  Academic Advancement and Future Planning",
+    title: "Candidate Platform - Hackathon for All",
     content:
-      "Focused on advanced coursework at San Jose State University, including Discrete Mathematics and Assembly Language.  Continued contributing to research in machine learning and IoT through the Big Brain Computational Neuroscience Club. Submitted Y Combinator application and reflected on the year's achievements, setting goals for future growth and collaboration in 2025.",
+      "Hackathons are not just for coders! This event will welcome designers, business minds, writers, and problem-solvers to collaborate and create solutions for real-world challenges. Whether developing an app, a marketing strategy, or an art project, this hackathon is for everyone.",
+  },
+  {
+    title: "Why Vote for Inky?",
+    content:
+      "Inky Ganbold is dedicated to bringing top-tier opportunities to De Anza students, building a strong, supportive community through events, and creating fun and meaningful experiences that prepare students for their future. Vote Inky Ganbold for DASG Chair of Programs – Let’s make De Anza a place of innovation, wellness, and success!",
+  },
+  {
+    title: "Campaign Website",
+    content: "https://cop.enk.icu",
   },
 ];
 
@@ -49,7 +58,7 @@ async function populatePinecone() {
     // Upsert to Pinecone
     await index.upsert([
       {
-        id: data.title,
+        id: data.title.toLowerCase().replace(/ /g, "-"),
         values: embedding,
         metadata: {
           title: data.title,
