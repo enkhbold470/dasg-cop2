@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-
+  import { pageData } from "$lib/config/site";
   let isVisible = false;
 
   onMount(() => {
@@ -9,19 +9,15 @@
 </script>
 
 <svelte:head>
-  <title>Inky Ganbold for DASG Leadership | De Anza College</title>
-  <meta
-    name="description"
-    content="Vote Inky Ganbold for DASG Leadership - Building a better future for De Anza College students"
-  />
+  <title>{pageData.title}</title>
+  <meta name="description" content={pageData.description} />
 </svelte:head>
 
 <!-- Hero Section -->
 <section
   class="relative flex h-screen items-center justify-start bg-cover bg-center text-white"
-  style="background-image: url('https://raw.githubusercontent.com/enkhbold470/enkhbold470/refs/heads/main/clean.jpg');"
+  style="background-image: {pageData.hero.backgroundImage};"
 >
-  <!-- <div class="absolute inset-0 backdrop-blur-[0px] backdrop-filter"></div> -->
   <div class="relative z-10 container text-left">
     <h1
       class="mb-6 text-5xl font-bold md:text-7xl {isVisible
@@ -29,7 +25,7 @@
         : 'opacity-0'} transition-opacity duration-1000"
       style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);"
     >
-      Leadership for Change
+      {pageData.hero.heading}
     </h1>
     <p
       class="mb-8 max-w-2xl text-xl md:text-2xl {isVisible
@@ -37,23 +33,16 @@
         : 'opacity-0'} transition-opacity delay-300 duration-1000"
       style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);"
     >
-      Vote Inky Ganbold for DASG Chair of Programs
+      {pageData.hero.subheading}
     </p>
     <div
       class="flex space-x-4 {isVisible
         ? 'opacity-100'
         : 'opacity-0'} transition-opacity delay-500 duration-1000"
     >
-      <a
-        href="#about"
-        class="btn-secondary bg-white text-[#8B032C] hover:bg-gray-100"
-        >Learn More</a
-      >
-      <a
-        href="#contact"
-        class="btn-primary border-2 bg-transparent hover:bg-white hover:text-[#8B032C]"
-        >Get Involved</a
-      >
+      {#each pageData.hero.buttons as button}
+        <a href={button.href} class={button.class}>{button.text}</a>
+      {/each}
     </div>
   </div>
 </section>
@@ -63,48 +52,31 @@
   <div class="container">
     <div class="grid items-center gap-12 md:grid-cols-2">
       <div>
-        <h2 class="mb-6 text-4xl font-bold text-[#8B032C]">About Me</h2>
-        <p class="mb-6 text-lg">
-          Hello! I'm Inky Ganbold, a Computer Science and Engineering student
-          from Ulaanbaatar, Mongolia. As a full-time student of the De Anza
-          college since Spring 2023, I bring unique perspectives and experiences
-          to serve our diverse student body.
-        </p>
+        <h2 class="mb-6 text-4xl font-bold text-[#8B032C]">
+          {pageData.about.title}
+        </h2>
+        <p class="mb-6 text-lg">{pageData.about.content}</p>
         <ul class="space-y-4">
-          <li class="flex items-center">
-            <span class="mr-2 text-[#8B032C]">✓</span>
-            Experience from 22 hackathons at top universities
-          </li>
-          <li class="flex items-center">
-            <span class="mr-2 text-[#8B032C]">✓</span>
-            Passionate about technology and innovation
-          </li>
-          <li class="flex items-center">
-            <span class="mr-2 text-[#8B032C]">✓</span>
-            Committed to building a stronger De Anza community
-          </li>
+          {#each pageData.about.achievements as achievement}
+            <li class="flex items-center">
+              <span class="mr-2 text-[#8B032C]">✓</span>
+              {achievement}
+            </li>
+          {/each}
         </ul>
       </div>
       <div class="rounded-lg bg-gray-100 p-8">
-        <h3 class="mb-4 text-2xl font-bold text-[#8B032C]">My Vision</h3>
-        <p class="mb-6">
-          I see tremendous potential to bring innovative opportunities to De
-          Anza College. My goal is to enhance our college experience and better
-          prepare students for their future endeavors.
-        </p>
+        <h3 class="mb-4 text-2xl font-bold text-[#8B032C]">
+          {pageData.about.vision.title}
+        </h3>
+        <p class="mb-6">{pageData.about.vision.content}</p>
         <div class="space-y-4">
-          <div class="rounded-lg bg-white p-4 shadow">
-            <h4 class="font-bold">Build Friendships</h4>
-            <p>Creating a more connected campus community</p>
-          </div>
-          <div class="rounded-lg bg-white p-4 shadow">
-            <h4 class="font-bold">Enhance Events</h4>
-            <p>Organizing engaging activities and networking opportunities</p>
-          </div>
-          <div class="rounded-lg bg-white p-4 shadow">
-            <h4 class="font-bold">Develop Skills</h4>
-            <p>Implementing programs for personal and professional growth</p>
-          </div>
+          {#each pageData.about.vision.initiatives as initiative}
+            <div class="rounded-lg bg-white p-4 shadow">
+              <h4 class="font-bold">{initiative.title}</h4>
+              <p>{initiative.description}</p>
+            </div>
+          {/each}
         </div>
       </div>
     </div>
@@ -118,27 +90,12 @@
       Campaign Goals
     </h2>
     <div class="grid gap-8 md:grid-cols-3">
-      <div class="rounded-lg bg-white p-6 shadow-lg">
-        <h3 class="mb-4 text-xl font-bold">Leadership Development</h3>
-        <p>
-          Fostering leadership skills through hands-on experience and mentorship
-          opportunities.
-        </p>
-      </div>
-      <div class="rounded-lg bg-white p-6 shadow-lg">
-        <h3 class="mb-4 text-xl font-bold">Student Success</h3>
-        <p>
-          Creating resources and programs to help students achieve their
-          academic and career goals.
-        </p>
-      </div>
-      <div class="rounded-lg bg-white p-6 shadow-lg">
-        <h3 class="mb-4 text-xl font-bold">Campus Unity</h3>
-        <p>
-          Building a more inclusive and connected campus community through
-          events and initiatives.
-        </p>
-      </div>
+      {#each pageData.goals as goal}
+        <div class="rounded-lg bg-white p-6 shadow-lg">
+          <h3 class="mb-4 text-xl font-bold">{goal.title}</h3>
+          <p>{goal.description}</p>
+        </div>
+      {/each}
     </div>
   </div>
 </section>
@@ -147,25 +104,19 @@
 <section class="bg-gray-100 py-20">
   <div class="container text-center">
     <h2 class="mb-8 text-4xl font-bold text-[#8B032C]">
-      More About My Campaign
+      {pageData.additionalInfo.title}
     </h2>
     <div class="grid gap-8 md:grid-cols-2">
-      <div class="rounded-lg bg-white p-6 shadow-lg">
-        <img
-          src="https://raw.githubusercontent.com/enkhbold470/enkhbold470/refs/heads/main/harvard.JPG"
-          alt="Campaign initiatives and events"
-          class="mb-4 h-48 w-full rounded-lg object-cover"
-        />
-        <p>Details about the campaign initiatives and events.</p>
-      </div>
-      <div class="rounded-lg bg-white p-6 shadow-lg">
-        <img
-          src="https://raw.githubusercontent.com/enkhbold470/enkhbold470/refs/heads/main/dubai.JPG"
-          alt="Campaign involvement opportunities"
-          class="mb-4 h-48 w-full rounded-lg object-cover"
-        />
-        <p>Information on how to get involved and support the campaign.</p>
-      </div>
+      {#each pageData.additionalInfo.images as image}
+        <div class="rounded-lg bg-white p-6 shadow-lg">
+          <img
+            src={image.src}
+            alt={image.alt}
+            class="mb-4 h-48 w-full rounded-lg object-cover"
+          />
+          <p>{image.description}</p>
+        </div>
+      {/each}
     </div>
   </div>
 </section>
@@ -173,20 +124,20 @@
 <!-- Contact Section -->
 <section id="contact" class="bg-[#8B032C] py-20 text-white">
   <div class="container text-center">
-    <h2 class="mb-8 text-4xl font-bold">Get Involved</h2>
-    <p class="mb-8 text-xl">
-      Join our campaign and help make a difference at De Anza College
-    </p>
+    <h2 class="mb-8 text-4xl font-bold">{pageData.contact.title}</h2>
+    <p class="mb-8 text-xl">{pageData.contact.description}</p>
     <div class="mx-auto max-w-md rounded-lg bg-white p-8 text-gray-900">
       <p class="mb-4">
         <strong>Email:</strong>
-        <a href="mailto:ganboldinky@student.deanza.edu" class="text-[#8B032C]"
-          >ganboldinky@student.deanza.edu</a
+        <a href="mailto:{pageData.contact.email}" class="text-[#8B032C]"
+          >{pageData.contact.email}</a
         >
       </p>
       <p>
         <strong>Phone:</strong>
-        <a href="tel:4086474314" class="text-[#8B032C]">(408) 647-4314</a>
+        <a href="tel:4086474314" class="text-[#8B032C]"
+          >{pageData.contact.phone}</a
+        >
       </p>
     </div>
   </div>
