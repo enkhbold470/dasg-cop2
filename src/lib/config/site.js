@@ -2,7 +2,7 @@ export const headerAnnouncement = {
     text: "Text INKY to (408) 647-4314 for campaign updates!",
     link: {
       text: "Text now",
-      href: "sms:+14086474314&body=INKY",
+      href: "sms:+14086474314",
     },
 }
 
