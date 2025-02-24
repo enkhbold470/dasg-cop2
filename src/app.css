@@ -10,7 +10,7 @@
 @layer base {
 	body {
 		@apply bg-white text-gray-900; /* Fixed syntax */
-		overflow: hidden; /* Added overflow hidden */
+		/* overflow: hidden; Added overflow hidden */
 	}
 	h1,
 	h2,
