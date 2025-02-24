@@ -1,11 +1,19 @@
 <script>
   import { onMount } from "svelte";
+  import { Sparkles, X, Send } from "lucide-svelte";
+  import { marked } from "marked";
 
   let isOpen = false;
   let messages = [];
   let userInput = "";
   let isLoading = false;
   let chatContainer;
+
+  // Configure marked options
+  marked.setOptions({
+    breaks: true, // Enable line breaks
+    gfm: true, // Enable GitHub Flavored Markdown
+  });
 
   // Scroll to bottom of chat when new messages arrive
   $: if (chatContainer) {
@@ -39,7 +47,16 @@
         throw new Error(data.error);
       }
 
-      messages = [...messages, { role: "assistant", content: data.message }];
+      // Parse the message as Markdown using Tailwind CSS Typography
+      const parsedMessage = marked(data.message);
+      messages = [
+        ...messages,
+        {
+          role: "assistant",
+          content: parsedMessage,
+          isMarkdown: true,
+        },
+      ];
     } catch (error) {
       console.error("Error:", error);
       messages = [
@@ -47,6 +64,7 @@
         {
           role: "assistant",
           content: "Sorry, I encountered an error. Please try again.",
+          isMarkdown: false,
         },
       ];
     } finally {
@@ -69,10 +87,14 @@
 <div class="fixed bottom-4 right-4 z-50">
   {#if !isOpen}
     <button
+      aria-label="Open chat"
       on:click={() => (isOpen = true)}
       class="bg-blue-500 hover:bg-blue-600 text-white rounded-full p-4 shadow-lg transition-all duration-300 transform hover:scale-110"
     >
-      ask about Inky
+      <!-- ask about Inky -->
+      <div class="flex items-center gap-2">
+        <Sparkles class="h-6 w-6" />
+      </div>
     </button>
   {:else}
     <div class="bg-white rounded-lg shadow-xl w-96 h-[500px] flex flex-col">
@@ -83,22 +105,10 @@
         <h3 class="font-semibold">DASG Campaign Assistant</h3>
         <button
           on:click={() => (isOpen = false)}
+          aria-label="Close"
           class="text-white hover:text-gray-200"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
+          <X class="h-6 w-6" />
         </button>
       </div>
 
@@ -125,9 +135,13 @@
                 message.role === "user"
                   ? "bg-blue-500 text-white"
                   : "bg-white text-gray-800 shadow-sm"
-              }`}
+              } prose`}
             >
-              {message.content}
+              {#if message.isMarkdown}
+                {@html message.content}
+              {:else}
+                {message.content}
+              {/if}
             </div>
           </div>
         {/each}
@@ -168,7 +182,7 @@
             disabled={isLoading || !userInput.trim()}
             class="bg-blue-500 text-white rounded-lg px-4 py-2 hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
           >
-            Send
+            <Send class="h-6 w-6" />
           </button>
         </div>
       </div>
@@ -177,5 +191,8 @@
 </div>
 
 <style>
-  /* Add any custom styles here */
+  /* Markdown content styling */
+  :global(.prose) {
+    @apply max-w-none;
+  }
 </style>
