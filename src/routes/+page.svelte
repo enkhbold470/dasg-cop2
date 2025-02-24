@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import { pageData } from "$lib/config/site";
+  import { pageData, electionDate } from "$lib/config/site";
   let isVisible = false;
 
   onMount(() => {
@@ -127,6 +127,15 @@
     <h2 class="mb-8 text-4xl font-bold">{pageData.contact.title}</h2>
     <p class="mb-8 text-xl">{pageData.contact.description}</p>
     <div class="mx-auto max-w-md rounded-lg bg-white p-8 text-gray-900">
+      <p class="mb-10 font-bold underline">
+        <a
+          href="https://deanza.edu/studentvote/"
+          target="_blank"
+          class="text-[#8B032C] underline"
+          >CLICK HERE TO VOTE FOR BALLOT #36 Inky Ganbold for DASG Chair of
+          Programs before {electionDate.toLocaleDateString()}</a
+        >
+      </p>
       <p class="mb-4">
         <strong>Email:</strong>
         <a href="mailto:{pageData.contact.email}" class="text-[#8B032C]"
