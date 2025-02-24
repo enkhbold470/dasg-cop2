@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { menuItems, headerAnnouncement } from "$lib/config/site";
+  import { menuItems } from "$lib/config/site";
 
   let isScrolled = false;
   let isMenuOpen = false;
@@ -21,14 +21,14 @@
     ? 'bg-white shadow-lg'
     : 'bg-transparent'}"
 >
-  <div class="bg-[#8B032C] py-1 text-center text-white">
-    <!-- <p class="text-sm">
+  <!-- <div class="bg-[#8B032C] py-1 text-center text-white">
+    <p class="text-sm">
       {headerAnnouncement.text}
       <a href={headerAnnouncement.link.href} class="text-sm underline"
         >{headerAnnouncement.link.text}</a
       >
-    </p> -->
-  </div>
+    </p>
+  </div> -->
   <div class="container mx-auto px-4">
     <div class="flex h-20 items-center justify-between">
       <a
