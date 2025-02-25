@@ -1,6 +1,6 @@
 <script>
   import CountdownTimer from "$lib/components/CountdownTimer.svelte";
-  import { platformData } from "$lib/config/site";
+  import { platformData, electionDate } from "$lib/config/site";
 </script>
 
 <svelte:head>

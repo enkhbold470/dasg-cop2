@@ -32,8 +32,13 @@
 
 <div class="rounded-lg bg-white/90 p-6 text-center shadow-lg backdrop-blur-sm">
   <h3 class="mb-4 text-2xl font-bold text-[#8B032C]">
-    Vote for ballot #36 Inky Ganbold for DASG Chair of Programs before
-    {electionDate.toLocaleDateString()}
+    <a
+      href="https://deanza.edu/studentvote/"
+      target="_blank"
+      class="text-[#8B032C] underline"
+      >CLICK HERE TO VOTE FOR BALLOT #36 Inky Ganbold for DASG Chair of
+      Programs/Events before
+    </a>
   </h3>
   <div class="grid grid-cols-4 gap-4">
     <div class="rounded-lg bg-[#8B032C] p-3 text-white">
