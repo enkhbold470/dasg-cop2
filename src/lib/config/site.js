@@ -162,9 +162,8 @@ export const menuItems = [
   { href: "/", text: "Home" },
   { href: "/#about", text: "About" },
   { href: "/#platform", text: "Platform" },
-  { href: "/#goals", text: "Goals" },
-
   { href: "/#contact", text: "Contact" },
+  { href: "/poster", text: "Campaign Poster" },
 ];
 
 export const contactInfo = {
