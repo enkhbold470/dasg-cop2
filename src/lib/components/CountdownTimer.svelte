@@ -58,4 +58,7 @@
       <div class="text-sm">Seconds</div>
     </div>
   </div>
+  <p class="mt-4 text-sm">
+    Voting period is from 18:00:00 on February 24th to 16:00:00 on March 7th.
+  </p>
 </div>
