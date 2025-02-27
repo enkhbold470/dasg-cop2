@@ -161,8 +161,9 @@ export let twitterPosts = [
 export const menuItems = [
   { href: "/", text: "Home" },
   { href: "/#about", text: "About" },
-  { href: "/#goals", text: "Goals" },
   { href: "/#platform", text: "Platform" },
+  { href: "/#goals", text: "Goals" },
+
   { href: "/#contact", text: "Contact" },
 ];
 
