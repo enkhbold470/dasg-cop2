@@ -8,8 +8,23 @@ const campaignData = [
   {
     title: "How can I vote for Inky?",
     content:
-      "You can vote for Inky by going to the De Anza Student Government Candidate voting website and voting for Inky. You can also vote for Inky by going to the De Anza Student Government Candidate voting website and voting for Inky. https://deanza.edu/studentvote/ is the official website for the voting. Voting period is from 18:00:00 on February 24th to 16:00:00 on March 7th. Candidate for Ballot #36 is Inky Ganbold.",
+      "You can vote for Inky by going to the De Anza Student Government Candidate voting website. https://deanza.edu/studentvote/ is the official website for the voting. Voting period is from 6:00 AM on February 24th to 4:00 PM on March 7th. Candidate for Ballot #36 is Inky Ganbold.",
   },
+  {
+    title: "Three focus areas of Inky's platform",
+    content: "More Hackathons. More E-sports Tournaments. More Campus Events.",
+  },
+  {
+    title: "What is Inky's vision?",
+    content:
+      "Inky's vision is to bring more hackathons, e-sports tournaments, and more to our campus.",
+  },
+  {
+    title: "What is Inky's platform?",
+    content:
+      "Inky's platform is to bring more hackathons, e-sports tournaments, and more to our campus.",
+  },
+  
 ];
 
 async function populatePinecone() {
