@@ -8,14 +8,14 @@ export const headerAnnouncement = {
 
 export const electionDate = new Date("2025-03-07T16:00:00"); // Update with actual election date
 export const pageData = {
-  title: "Inky Ganbold for DASG Leadership | De Anza College",
+  title: "Inky Ganbold for Chair of Programs ",
   description:
-    "Vote Inky Ganbold for DASG Leadership - Building a better future for De Anza College students",
+    "Vote Inky Ganbold for Chair of Programs, vote for hackathons, e-sports, and more!",
   hero: {
     backgroundImage:
       "url('https://raw.githubusercontent.com/enkhbold470/enkhbold470/refs/heads/main/clean.jpg')",
-    heading: "Leadership for Change",
-    subheading: "Vote Inky Ganbold for DASG Chair of Programs",
+    heading: "Innovation for Change",
+    subheading: "Vote Inky Ganbold for Chair of Programs ",
     buttons: [
       {
         href: "#about",
@@ -33,49 +33,47 @@ export const pageData = {
   about: {
     title: "About Me",
     content:
-      "Hello! I'm Inky Ganbold, a Computer Science and Engineering student from Ulaanbaatar, Mongolia. As a full-time student of the De Anza college since Spring 2023, I bring unique perspectives and experiences to serve our diverse student body.",
+      "I'm Inky Ganbold - Computer Science student from Mongolia. Full-time De Anza student since 2023. Participated in 22 hackathons at Stanford, MIT, Harvard, and other top schools.",
     achievements: [
-      "Experience from 22 hackathons at top universities",
-      "Passionate about technology and innovation",
-      "Committed to building a stronger De Anza community",
+      "22 hackathons participated at US universities",
+      "Organized 2 hackathons at my college",
     ],
     vision: {
-      title: "My Vision",
+      title: "My Plan",
       content:
-        "I see tremendous potential to bring innovative opportunities to De Anza College. My goal is to enhance our college experience and better prepare students for their future endeavors.",
+        "Three focus areas: Better job prep, more hands-on events, stronger campus community. All events should help students gain real-world skills.",
       initiatives: [
         {
-          title: "Build Friendships",
-          description: "Creating a more connected campus community",
+          title: "Job Workshops",
+          description: "LinkedIn/resume sessions with industry pros",
         },
         {
-          title: "Enhance Events",
+          title: "Inclusive Hackathons",
           description:
-            "Organizing engaging activities and networking opportunities",
+            "Open to artists, writers, business majors - not just coders",
         },
         {
-          title: "Develop Skills",
-          description:
-            "Implementing programs for personal and professional growth",
+          title: "E-sports Tournaments for mental health support",
+          description: "Supporting students' mental health through e-sports",
         },
       ],
     },
   },
   goals: [
     {
-      title: "Leadership Development",
+      title: "More Hackathons",
       description:
-        "Fostering leadership skills through hands-on experience and mentorship opportunities.",
+        "Bringing more hackathons to our campus to help students gain real-world skills.",
     },
     {
-      title: "Student Success",
+      title: "More E-sports Tournaments",
       description:
-        "Creating resources and programs to help students achieve their academic and career goals.",
+        "Bringing more e-sports tournaments to our campus to help students gain real-world skills.",
     },
     {
-      title: "Campus Unity",
+      title: "More Campus Events",
       description:
-        "Building a more inclusive and connected campus community through events and initiatives.",
+        "Bringing more campus events to our campus to help students gain real-world skills.",
     },
   ],
   additionalInfo: {
@@ -96,8 +94,7 @@ export const pageData = {
   },
   contact: {
     title: "Get Involved",
-    description:
-      "Join our campaign and help make a difference at De Anza College",
+    description: "Join our campaign and help make a difference",
     email: "ganboldinky@student.deanza.edu",
     phone: "(408) 647-4314",
   },
@@ -184,14 +181,13 @@ export const quickLinks = [
 export const platformData = [
   {
     title: "My Platform",
-    description:
-      "Learn about Inky Ganbold's platform and vision for De Anza College's DASG leadership.",
+    description: "Learn about Inky Ganbold's platform and vision.",
     readMore: "/readmore-platform",
   },
   {
-    title: "Vision for De Anza",
+    title: "Vision",
     vision:
-      "As your DASG Chair of Programs, I am committed to enhancing the student experience at De Anza College through innovative programs and initiatives that foster growth, community, and success.",
+      "As your Chair of Programs, I am planning to bring more hackathons, e-sports tournaments, and more to our campus.",
     keyInitiatives: {
       studentSuccess: [
         "Mentorship opportunities",
