@@ -175,7 +175,7 @@ export const contactInfo = {
 };
 
 export const quickLinks = [
-  { href: "/platform", text: "Platform" },
+  { href: "/#platform", text: "Platform" },
   { href: "https://enk.icu/blog", text: "Blog", target: "_blank" },
   { href: "/terms-privacy", text: "Terms & Privacy" },
   { href: "/poster", text: "Campaign Poster" },
