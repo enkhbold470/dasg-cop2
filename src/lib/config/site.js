@@ -165,7 +165,7 @@ export const menuItems = [
   { href: "/", text: "Home" },
   { href: "/#about", text: "About" },
   { href: "/#goals", text: "Goals" },
-  { href: "/platform", text: "Platform" },
+  { href: "/#platform", text: "Platform" },
   { href: "/#contact", text: "Contact" },
 ];
 
@@ -214,15 +214,15 @@ export const platformData = [
   {
     title: "Key Initiatives",
     visionPoints: [
-      "Create more opportunities for student engagement and leadership development",
-      "Organize hackathons and tech events to promote innovation",
-      "Build stronger connections between students and industry professionals",
+      "Linkedin workshops",
+      "More hackathons",
+      "E-sports tournaments",
     ],
     keyInitiatives: {
       studentSuccess: [
-        "Mentorship opportunities",
-        "Career development workshops",
-        "Leadership training sessions",
+        "Linkedin workshops",
+        "More hackathons",
+        "E-sports tournaments",
       ],
       communityBuilding: [
         "Cross-cultural events",
