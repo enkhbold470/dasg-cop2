@@ -149,12 +149,18 @@ export const socialLinks = [
 ];
 
 export let instagramPosts = [
-  "https://www.instagram.com/p/LATEST_POST_ID/",
+  "https://www.instagram.com/reel/DGvTdhRoBb_",
+  "https://www.instagram.com/p/DGmRxEFPRt4/",
+  "https://www.instagram.com/p/DGh3jgLubOq/",
+  "https://www.instagram.com/p/DGmLBFHy2s_/",
+  "https://www.instagram.com/p/DGmOVXbSSWE/",
+  "https://www.instagram.com/p/DGr9UTBOVkl/",
+
   // Add more Instagram post URLs
 ];
 
 export let twitterPosts = [
-  "https://twitter.com/username/status/TWEET_ID",
+  // "https://twitter.com/username/status/TWEET_ID",
   // Add more Twitter post URLs
 ];
 
