@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import { pageData, electionDate, platformData } from "$lib/config/site";
   import CountdownTimer from "$lib/components/CountdownTimer.svelte";
+  import SocialFeed from "$lib/components/SocialFeed.svelte";
   let isVisible = false;
 
   onMount(() => {
@@ -84,6 +85,7 @@
   </div>
 </section>
 
+<!-- Platform Section -->
 <section id="platform" class="bg-gray-50 py-20">
   <div class="container mt-20">
     <div class="mx-auto max-w-4xl">
@@ -176,6 +178,16 @@
         </div>
       {/each}
     </div>
+  </div>
+</section>
+
+<!-- Social Section -->
+<section id="social" class="bg-gray-50 py-20">
+  <div class="container">
+    <h2 class="mb-12 text-center text-4xl font-bold text-[#8B032C]">
+      Social Media
+    </h2>
+    <SocialFeed />
   </div>
 </section>
 
